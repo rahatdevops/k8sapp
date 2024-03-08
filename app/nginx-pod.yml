@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - image: asrafbd/mynginx:v3
-        name: mynginx2
+        name: mynginx3
         ports:
         - containerPort: 80
