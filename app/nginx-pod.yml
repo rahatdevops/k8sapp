@@ -1,18 +1,22 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: nginx-pod
+  labels:
+    app: myapp
+  name: myapp
 spec:
-  volumes:
-    - name: data
-      persistentVolumeClaim:
-        claimName: pvc-storage
-  containers:
-    - name: pv-container
-      image: nginx
-      ports:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - image: asrafbd/mynginx:v3
+        name: mynginx
+        ports:
         - containerPort: 80
-          name: "http-server"
-      volumeMounts:
-        - mountPath: /data
-          name: data
