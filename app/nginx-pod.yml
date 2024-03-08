@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: myapp
-  name: myapp
+    app: myapp2
+  name: myapp2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: myapp2
   strategy: {}
   template:
     metadata:
       labels:
-        app: myapp
+        app: myapp2
     spec:
       containers:
       - image: asrafbd/mynginx:v3
-        name: mynginx
+        name: mynginx2
         ports:
         - containerPort: 80
